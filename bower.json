@@ -8,7 +8,7 @@
     "description": "Add animations to a webpage, triggered when scrolling.",
     "main": [
         "js/vanilla-scrollanims.js",
-        "css/vanilla-scrollanims.css",
+        "css/vanilla-scrollanims.css"
     ],
     "keywords": [
         "js", "scroll"
