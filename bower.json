@@ -1,0 +1,27 @@
+{
+    "name": "vanillascrollanims",
+    "version": "0.7",
+    "homepage": "https://github.com/JavaScriptUtilities/vanillaScrollAnims/",
+    "authors": [
+        "Darklg"
+    ],
+    "description": "Add animations to a webpage, triggered when scrolling.",
+    "main": [
+        "js/vanilla-scrollanims.js",
+        "css/vanilla-scrollanims.css",
+    ],
+    "keywords": [
+        "js", "scroll"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "images/",
+        "tests",
+        ".git",
+        "index.html",
+        "js/script.js",
+        "LICENCE",
+        "README.md"
+    ]
+}

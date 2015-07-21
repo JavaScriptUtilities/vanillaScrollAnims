@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------
+  Base style
+---------------------------------------------------------- */
+
+*[data-hasscrollanim] {
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+*[data-hasscrollanim][data-active] {
+    opacity: 0.99;
+}
+
+/* ----------------------------------------------------------
+  Demo style
+---------------------------------------------------------- */
+
+.demo-scrollanim *[data-hasscrollanim] {
+    -webkit-transform: translateX(30px);
+    transform: translateX(30px);
+}
+
+.demo-scrollanim *[data-hasscrollanim][data-active] {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
