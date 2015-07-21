@@ -16,12 +16,12 @@
     "license": "MIT",
     "ignore": [
         "**/.*",
-        "images/",
-        "tests",
         ".git",
+        "bower.json",
+        "images/",
         "index.html",
         "js/script.js",
-        "LICENCE",
+        "LICENSE",
         "README.md"
     ]
 }
