@@ -1,6 +1,6 @@
 /*
  * Plugin Name: Vanilla-JS Scroll Animations
- * Version: 0.7
+ * Version: 0.8
  * Plugin URL: https://github.com/Darklg/JavaScriptUtilities
  * JavaScriptUtilities Vanilla-JS may be freely distributed under the MIT license.
  */
@@ -12,6 +12,11 @@
 
 var dkJSUScrollAnims = function(items, opt) {
     'use strict';
+
+    if (document.body.getAttribute('data-hasvanillascrollanims') == '1') {
+        return;
+    }
+    document.body.setAttribute('data-hasvanillascrollanims', '1');
 
     var self = this;
 
@@ -80,7 +85,7 @@ var dkJSUScrollAnims = function(items, opt) {
         for (var i = 0, len = items.length; i < len; i++) {
             if (items[i]) {
                 tmpItem = this.getItem(items[i]);
-                this.markItemAsAnimationReady(tmpItem);
+                this.setUpItemAsAnimationReady(tmpItem);
                 finalItems.push(tmpItem);
             }
         }
@@ -106,18 +111,21 @@ var dkJSUScrollAnims = function(items, opt) {
         return tmpItem;
     };
 
-    this.markItemAsAnimationReady = function(item) {
+    this.setUpItemAsAnimationReady = function(item) {
         if (item.children) {
             for (var i = 0, len = item.children.length; i < len; i++) {
-                item.children[i].setAttribute('data-hasscrollanim', '1');
-                this.opt.afterGetItems(item.children[i]);
+                this.markItemAsAnimationReady(item.children[i]);
             }
         }
         else {
-            item.el.setAttribute('data-hasscrollanim', '1');
-            this.opt.afterGetItems(item.el);
+            this.markItemAsAnimationReady(item.el);
         }
     };
+
+    this.markItemAsAnimationReady = function(el) {
+        el.setAttribute('data-hasscrollanim', '1');
+        this.opt.afterGetItems(el);
+    }
 
     this.getPositionForItem = function(item) {
         return item.getBoundingClientRect();
@@ -234,6 +242,15 @@ var dkJSUScrollAnims = function(items, opt) {
             }
         }
     };
+
+    /* ----------------------------------------------------------
+      Reload
+    ---------------------------------------------------------- */
+
+    this.reloadItems = function(items) {
+        this.items = this.getItems(items);
+        this.resizeEvent();
+    }
 
     /* ----------------------------------------------------------
       Utilities
