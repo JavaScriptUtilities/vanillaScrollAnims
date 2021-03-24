@@ -6,14 +6,14 @@
 <link rel="stylesheet" type="text/css" href="css/demo.css" />
 <link rel="stylesheet" type="text/css" href="css/vanilla-scrollanim.css" />
 <script src="js/script.js"></script>
-<script src="js/vanilla-scrollanims.js"></script>
+<script src="js/vanilla-scrollanims.min.js"></script>
 </head>
 <body class="demo-scrollanim">
 <h1>JavaScript Utilities - Vanilla Scroll Anims</h1>
 
 <script class="script-visible" contenteditable>window.domReady(function scrollanimdomready(){
     // Find elements
-    var scrollItems = document.querySelectorAll('.has-scrollanim, .has-scrollanim-children');
+    var scrollItems = document.querySelectorAll('.has-scrollanim');
     // Trigger plugin
     var scrollAnim = new dkJSUScrollAnims(scrollItems, {});
     // Add a custom event, triggered at scroll
@@ -50,7 +50,7 @@
 <p>Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world are the ones who do.</p>
 
 <h3>Example using children elements</h3>
-<div class="has-scrollanim-children" data-childselector="img" data-usechildren="1" data-delay="100">
+<div class="has-scrollanim" data-childselector="img" data-usechildren="1" data-delay="100">
     <p>
         <img src="images/image-1.jpg" height="100" width="150" alt="" />
         <img src="images/image-1.jpg" height="100" width="150" alt="" />

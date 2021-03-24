@@ -1,7 +1,7 @@
 /*
  * Plugin Name: Vanilla-JS Scroll Animations
- * Version: 0.8
- * Plugin URL: https://github.com/Darklg/JavaScriptUtilities
+ * Version: 0.9.0
+ * Plugin URL: https://github.com/JavaScriptUtilities/vanillaScrollAnims
  * JavaScriptUtilities Vanilla-JS may be freely distributed under the MIT license.
  */
 
@@ -125,7 +125,7 @@ var dkJSUScrollAnims = function(items, opt) {
     this.markItemAsAnimationReady = function(el) {
         el.setAttribute('data-hasscrollanim', '1');
         this.opt.afterGetItems(el);
-    }
+    };
 
     this.getPositionForItem = function(item) {
         return item.getBoundingClientRect();
@@ -149,13 +149,21 @@ var dkJSUScrollAnims = function(items, opt) {
         window.removeEventListener('load', self.resizeEvent);
     };
 
+    var _scrollBorder = 0,
+        _scrollTicking = false;
     this.scrollEvent = function() {
         // Get top border
-        var innerHeight = (window.innerHeight || document.body.innerHeight),
-            border = innerHeight + window.pageYOffset + self.opt.offsetY;
+        var innerHeight = (window.innerHeight || document.body.innerHeight);
+        _scrollBorder = innerHeight + window.pageYOffset + self.opt.offsetY;
 
         // Set active items
-        self.setActiveItems(border);
+        if (!_scrollTicking) {
+            requestAnimationFrame(function() {
+                self.setActiveItems(_scrollBorder);
+                _scrollTicking = false;
+            });
+        }
+        _scrollTicking = true;
     };
 
     this.resizeEvent = function() {
@@ -250,7 +258,7 @@ var dkJSUScrollAnims = function(items, opt) {
     this.reloadItems = function(items) {
         this.items = this.getItems(items);
         this.resizeEvent();
-    }
+    };
 
     /* ----------------------------------------------------------
       Utilities
